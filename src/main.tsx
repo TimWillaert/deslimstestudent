@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <DrieZesNegen />,
   },
   {
-    path: "/puzzel",
+    path: "/puzzel/:number",
     element: <Puzzel />,
   },
 ]);

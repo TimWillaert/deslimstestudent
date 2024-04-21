@@ -1,17 +1,47 @@
 {
   "participants": ["Alex", "Charlotte", "Joost"],
-  "puzzle1": [
-    {
-      "answer": "Letters",
-      "values": ["a", "b", "c", "d"]
-    },
-    {
-      "answer": "Cijfers",
-      "values": ["548", "22", "347", "998"]
-    },
-    {
-      "answer": "Griekse Letters",
-      "values": ["alpha", "beta", "omega", "delta"]
-    }
+  "puzzles": [
+    [
+      {
+        "answer": "Kleuren",
+        "values": ["rood", "blauw", "geel", "groen"]
+      },
+      {
+        "answer": "Dagen",
+        "values": ["maandag", "dinsdag", "woensdag", "donderdag"]
+      },
+      {
+        "answer": "Maanden",
+        "values": ["januari", "februari", "maart", "april"]
+      }
+    ],
+    [
+      {
+        "answer": "Vogels",
+        "values": ["merel", "mus", "kraai", "duif"]
+      },
+      {
+        "answer": "Vissen",
+        "values": ["karper", "snoek", "baars", "paling"]
+      },
+      {
+        "answer": "Zoogdieren",
+        "values": ["olifant", "leeuw", "tijger", "nijlpaard"]
+      }
+    ],
+    [
+      {
+        "answer": "Landen",
+        "values": ["Nederland", "België", "Duitsland", "Frankrijk"]
+      },
+      {
+        "answer": "Hoofdsteden",
+        "values": ["Amsterdam", "Brussel", "Berlijn", "Parijs"]
+      },
+      {
+        "answer": "Rivieren",
+        "values": ["Rijn", "Maas", "Schelde", "Seine"]
+      }
+    ]
   ]
 }

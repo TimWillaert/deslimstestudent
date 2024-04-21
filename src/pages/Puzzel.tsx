@@ -5,16 +5,28 @@ import json from "../data.json";
 import PuzzleItem from "../components/PuzzleItem";
 import PuzzleAnswer from "../components/PuzzleAnswer";
 import useKeypress from "react-use-keypress";
+import { useParams } from "react-router-dom";
 
 export default function Puzzel() {
-  const puzzle = json.puzzle1;
+  const params = useParams();
+  const puzzle = json.puzzles[parseInt(params.number!) - 1];
+
   const [data, setData] = useState<Participant[]>(getLocalStorageData());
   const [solved, setSolved] = useState<string[]>([]);
+  const [unsolved, setUnsolved] = useState<string[]>([]);
 
   const [countdown, setCountdown] = useState<number>(0);
 
   const participantOrder = useMemo(() => {
-    return data.sort((a, b) => a.score - b.score);
+    return data.sort((a, b) => {
+      if (!a.startedPuzzle && b.startedPuzzle) {
+        return -1;
+      }
+      if (a.startedPuzzle && !b.startedPuzzle) {
+        return 1;
+      }
+      return a.score - b.score;
+    });
   }, []);
   const [participantsPlayed, setParticipantsPlayed] = useState<number>(1);
 
@@ -44,17 +56,29 @@ export default function Puzzel() {
   }, [participantsPlayed, solved]);
 
   useKeypress("a", () => {
-    setSolved([...solved, puzzle[0].answer]);
+    if (!gameOver) {
+      setSolved([...solved, puzzle[0].answer]);
+    } else {
+      setUnsolved([...unsolved, puzzle[0].answer]);
+    }
     correctAnswer();
   });
 
   useKeypress("b", () => {
-    setSolved([...solved, puzzle[1].answer]);
+    if (!gameOver) {
+      setSolved([...solved, puzzle[1].answer]);
+    } else {
+      setUnsolved([...unsolved, puzzle[1].answer]);
+    }
     correctAnswer();
   });
 
   useKeypress("c", () => {
-    setSolved([...solved, puzzle[2].answer]);
+    if (!gameOver) {
+      setSolved([...solved, puzzle[2].answer]);
+    } else {
+      setUnsolved([...unsolved, puzzle[2].answer]);
+    }
     correctAnswer();
   });
 
@@ -122,8 +146,25 @@ export default function Puzzel() {
   }, [solved]);
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(data));
+    const newData = data.map((participant) => {
+      if (participant.id === participantOrder[0].id) {
+        return {
+          ...participant,
+          startedPuzzle: true,
+        };
+      } else {
+        return participant;
+      }
+    });
+    localStorage.setItem("data", JSON.stringify(newData));
   }, [data]);
+
+  if (
+    (params.number && parseInt(params.number) < 1) ||
+    (params.number && parseInt(params.number) > 3)
+  ) {
+    return <div className="font-mono">Invalid parameter</div>;
+  }
 
   return (
     <div className="w-screen h-screen flex flex-row">
@@ -145,6 +186,7 @@ export default function Puzzel() {
               answer={row.answer}
               index={index}
               solved={solved.includes(row.answer)}
+              unsolved={unsolved.includes(row.answer)}
             />
           ))}
         </div>
