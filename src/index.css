@@ -4,10 +4,9 @@
 
 @font-face {
   font-family: "Opinion Pro";
-  src: url("./font/Mint\ Type\ -\ Opinion\ Pro\ ExtraCondensed\ Light.otf")
-    format("otf");
+  src: url("./font/Opinion_Pro_Condensed_Light.otf") format("opentype");
 }
 
 * {
-  font-family: "Opinion Pro", sans-serif;
+  font-family: "Opinion Pro", serif;
 }

@@ -4,7 +4,9 @@ import Participant from "../types/Participant";
 export default function getLocalStorageData(): Participant[] {
   const data = localStorage.getItem("data");
   if (data) {
-    return JSON.parse(data);
+    const parsedData: Participant[] = JSON.parse(data);
+    parsedData.sort((a, b) => (b.id < a.id ? 1 : -1));
+    return parsedData;
   } else {
     const initData: Participant[] = [
       {

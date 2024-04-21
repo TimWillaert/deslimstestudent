@@ -12,12 +12,16 @@ function Overview() {
           {data.map((participant) => (
             <div
               key={participant.name}
-              className="flex flex-col items-center text-white gap-3"
+              className="flex flex-col items-center text-white gap-5"
             >
               <p className="font-bold text-xl">
                 {participant.name.toUpperCase()}
               </p>
-              <p className="text-lg">{participant.score}</p>
+              <div
+                className={`w-11 h-8 rounded-[90%] shadow-puzzle flex items-center justify-center`}
+              >
+                <p className="text-lg">{participant.score}</p>
+              </div>
             </div>
           ))}
         </div>
