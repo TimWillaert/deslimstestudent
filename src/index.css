@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Opinion Pro";
+  src: url("./font/Mint\ Type\ -\ Opinion\ Pro\ ExtraCondensed\ Light.otf")
+    format("otf");
+}
+
+* {
+  font-family: "Opinion Pro", sans-serif;
+}
