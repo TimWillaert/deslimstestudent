@@ -8,14 +8,17 @@ export default function getLocalStorageData(): Participant[] {
   } else {
     const initData: Participant[] = [
       {
+        id: 0,
         name: json.participants[0],
         score: 60,
       },
       {
+        id: 1,
         name: json.participants[1],
         score: 60,
       },
       {
+        id: 2,
         name: json.participants[2],
         score: 60,
       },

@@ -4,6 +4,7 @@ import Overview from "./pages/Overview.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DrieZesNegen from "./pages/DrieZesNegen.tsx";
+import Puzzel from "./pages/Puzzel.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/369",
     element: <DrieZesNegen />,
+  },
+  {
+    path: "/puzzel",
+    element: <Puzzel />,
   },
 ]);
 

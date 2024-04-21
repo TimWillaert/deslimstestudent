@@ -1,4 +1,5 @@
 type Participant = {
+  id: number;
   name: string;
   score: number;
 };

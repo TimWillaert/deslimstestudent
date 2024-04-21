@@ -1,24 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getLocalStorageData from "../helpers/getLocalStorageData";
 import Participant from "../types/Participant";
 import useKeypress from "react-use-keypress";
 
 export default function DrieZesNegen() {
-  const [data, setData] = useState<Participant[]>(
-    getLocalStorageData().map((participant) => ({
-      ...participant,
-      score: 0,
-    }))
-  );
+  const [data, setData] = useState<Participant[]>(getLocalStorageData());
   const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [currentParticipant, setCurrentParticipant] = useState(data[0].name);
+  const [currentParticipant, setCurrentParticipant] = useState(0);
   const [currentTries, setCurrentTries] = useState(0);
 
   useKeypress("j", () => {
     if (currentQuestion % 3 == 0) {
       setData((prevData) => {
         return prevData.map((participant) => {
-          if (participant.name === currentParticipant) {
+          if (participant.id === currentParticipant) {
             return {
               ...participant,
               score: participant.score + 10,
@@ -41,14 +36,11 @@ export default function DrieZesNegen() {
 
   useKeypress("f", () => {
     setCurrentTries((prev) => prev + 1);
-    setCurrentParticipant((prev) => {
-      const currentIndex = data.findIndex(
-        (participant) => participant.name === prev
-      );
+    setCurrentParticipant((currentIndex) => {
       if (currentIndex == data.length - 1) {
-        return data[0].name;
+        return data[0].id;
       } else {
-        return data[currentIndex + 1].name;
+        return data[currentIndex + 1].id;
       }
     });
     if (currentTries == 2) {
@@ -63,6 +55,10 @@ export default function DrieZesNegen() {
     }
   });
 
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(data));
+  }, [data]);
+
   return (
     <div className="w-screen h-screen flex flex-col">
       <div className="flex flex-row w-screen h-1/2">
@@ -75,7 +71,7 @@ export default function DrieZesNegen() {
             <div
               key={participant.name}
               className={`flex flex-col items-center gap-3 ${
-                currentParticipant == participant.name
+                currentParticipant == participant.id
                   ? "text-white"
                   : "text-white/50"
               }`}
@@ -83,7 +79,7 @@ export default function DrieZesNegen() {
               <p className="font-bold text-xl">
                 {participant.name.toUpperCase()}
               </p>
-              <p className="text-lg">{participant.score}</p>
+              <p className="text-lg">{participant.score - 60}</p>
             </div>
           ))}
         </div>

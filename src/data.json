@@ -1,8 +1,17 @@
 {
   "participants": ["Alex", "Charlotte", "Joost"],
   "puzzle1": [
-    ["a", "b", "c", "d"],
-    ["e", "f", "g", "h"],
-    ["i", "j", "k", "l"]
+    {
+      "answer": "Letters",
+      "values": ["a", "b", "c", "d"]
+    },
+    {
+      "answer": "Cijfers",
+      "values": ["548", "22", "347", "998"]
+    },
+    {
+      "answer": "Griekse Letters",
+      "values": ["alpha", "beta", "omega", "delta"]
+    }
   ]
 }
