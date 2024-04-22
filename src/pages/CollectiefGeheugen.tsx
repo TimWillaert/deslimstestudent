@@ -2,15 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import Participant from "../types/Participant";
 import getLocalStorageData from "../helpers/getLocalStorageData";
 import json from "../data.json";
-import PuzzleItem from "../components/PuzzleItem";
-import PuzzleAnswer from "../components/PuzzleAnswer";
 // @ts-expect-error no module declaration
 import useKeypress from "react-use-keypress";
 import { useParams } from "react-router-dom";
+import CollectiefGeheugenAnswer from "../components/CollectiefGeheugenAnswer";
 
-export default function Puzzel() {
+export default function CollectiefGeheugen() {
   const params = useParams();
-  const puzzle = json.puzzles[parseInt(params.number!) - 1];
+  const puzzle = json.collectief_geheugen[parseInt(params.number!) - 1];
 
   const [data, setData] = useState<Participant[]>(getLocalStorageData());
   const [solved, setSolved] = useState<string[]>([]);
@@ -21,7 +20,7 @@ export default function Puzzel() {
   const participantOrder = useMemo(() => {
     const sorted = data.sort((a, b) => a.score - b.score);
     const hasntStartedIndex = sorted.findIndex(
-      (participant) => !participant.startedPuzzle
+      (participant) => !participant.startedFilm
     );
 
     if (hasntStartedIndex !== -1) {
@@ -40,19 +39,10 @@ export default function Puzzel() {
     currentParticipant.score
   );
 
-  const flattenedPuzzle = useMemo(
-    () =>
-      puzzle.flatMap((row, index) => {
-        return row.values.map((value) => {
-          return { value, answer: row.answer, index };
-        });
-      }),
-    [puzzle]
-  );
-  const shuffledPuzzle = useMemo(
-    () => [...flattenedPuzzle].sort(() => Math.random() - 0.5),
-    [flattenedPuzzle]
-  );
+  const sortedArray = useMemo(() => {
+    const sortedData = [...data];
+    return sortedData.sort((a, b) => (b.id < a.id ? 1 : -1));
+  }, [data]);
 
   const gameOver = useMemo(() => {
     return participantsPlayed > data.length || solved.length >= puzzle.length;
@@ -60,27 +50,45 @@ export default function Puzzel() {
 
   useKeypress("a", () => {
     if (!gameOver) {
-      setSolved([...solved, puzzle[0].answer]);
+      setSolved([...solved, puzzle[0]]);
     } else {
-      setUnsolved([...unsolved, puzzle[0].answer]);
+      setUnsolved([...unsolved, puzzle[0]]);
     }
     correctAnswer();
   });
 
   useKeypress("b", () => {
     if (!gameOver) {
-      setSolved([...solved, puzzle[1].answer]);
+      setSolved([...solved, puzzle[1]]);
     } else {
-      setUnsolved([...unsolved, puzzle[1].answer]);
+      setUnsolved([...unsolved, puzzle[1]]);
     }
     correctAnswer();
   });
 
   useKeypress("c", () => {
     if (!gameOver) {
-      setSolved([...solved, puzzle[2].answer]);
+      setSolved([...solved, puzzle[2]]);
     } else {
-      setUnsolved([...unsolved, puzzle[2].answer]);
+      setUnsolved([...unsolved, puzzle[2]]);
+    }
+    correctAnswer();
+  });
+
+  useKeypress("d", () => {
+    if (!gameOver) {
+      setSolved([...solved, puzzle[3]]);
+    } else {
+      setUnsolved([...unsolved, puzzle[3]]);
+    }
+    correctAnswer();
+  });
+
+  useKeypress("e", () => {
+    if (!gameOver) {
+      setSolved([...solved, puzzle[4]]);
+    } else {
+      setUnsolved([...unsolved, puzzle[4]]);
     }
     correctAnswer();
   });
@@ -153,7 +161,7 @@ export default function Puzzel() {
       if (participant.id === participantOrder[0].id) {
         return {
           ...participant,
-          startedPuzzle: true,
+          startedFilm: true,
         };
       } else {
         return participant;
@@ -171,34 +179,33 @@ export default function Puzzel() {
 
   return (
     <div className="w-screen h-screen flex flex-row">
-      <div className="w-4/6 bg-red-600 border-r-8 border-blue-900">
-        <div className="grid grid-cols-3 grid-rows-4 gap-2 mx-20 my-14">
-          {shuffledPuzzle.map((cell, index) => (
-            <PuzzleItem
-              key={`${cell.value}-${index}`}
-              text={cell.value}
-              index={cell.index}
-              solved={solved.includes(cell.answer)}
-              unsolved={unsolved.includes(cell.answer)}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col mx-20 gap-5">
-          {puzzle.map((row, index) => (
-            <PuzzleAnswer
+      <div className="w-1/2 bg-red-600 border-r-8 border-blue-900 flex items-center">
+        <div className="flex flex-col mx-32 gap-10">
+          {puzzle.map((answer, index) => (
+            <CollectiefGeheugenAnswer
               key={index}
-              answer={row.answer}
-              index={index}
-              solved={solved.includes(row.answer)}
-              unsolved={unsolved.includes(row.answer)}
+              answer={answer}
+              solved={solved}
+              unsolved={unsolved.includes(answer)}
             />
           ))}
         </div>
       </div>
       <div className="flex-1 flex-col">
         <div className="h-1/2 bg-green-500 border-b-4 border-blue-900 relative">
-          <div className="bg-blue-900 text-white absolute bottom-5 left-5 rounded-full w-10 h-10 flex items-center justify-center">
-            <p>{currentScore}</p>
+          <div className="absolute -bottom-8 left-[50%] translate-x-[-50%] flex gap-20">
+            {sortedArray.map((participant) => (
+              <div
+                key={participant.id}
+                className={`${
+                  participant.id == currentParticipant.id
+                    ? "bg-0-background"
+                    : "bg-red-600"
+                } shadow-puzzle text-white rounded-[90%] w-14 h-14 flex items-center justify-center`}
+              >
+                <p className="text-3xl font-bold">{participant.score}</p>
+              </div>
+            ))}
           </div>
         </div>
         <div className="h-1/2 bg-green-500 border-t-4 border-blue-900">

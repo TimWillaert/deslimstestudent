@@ -5,6 +5,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DrieZesNegen from "./pages/DrieZesNegen.tsx";
 import Puzzel from "./pages/Puzzel.tsx";
+import CollectiefGeheugen from "./pages/CollectiefGeheugen.tsx";
+import RouterHotkeys from "./RouterHotkeys.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +21,16 @@ const router = createBrowserRouter([
     path: "/puzzel/:number",
     element: <Puzzel />,
   },
+  {
+    path: "/collectiefgeheugen/:number",
+    element: <CollectiefGeheugen />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterHotkeys>
+      <RouterProvider router={router} />
+    </RouterHotkeys>
   </React.StrictMode>
 );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getLocalStorageData from "../helpers/getLocalStorageData";
 import Participant from "../types/Participant";
+// @ts-expect-error no module declaration
 import useKeypress from "react-use-keypress";
 
 export default function DrieZesNegen() {

@@ -43,5 +43,10 @@
         "values": ["Rijn", "Maas", "Schelde", "Seine"]
       }
     ]
+  ],
+  "collectief_geheugen": [
+    ["Voetballer", "Argentinië", "FC Barcelona", "Inter Miami", "Wereldbeker"],
+    ["Zanger", "The Beatles", "Imagine", "New York", "Vredesactivist"],
+    ["Schilder", "Zonnebloemen", "Oor", "De sterrennacht", "Nederland"]
   ]
 }

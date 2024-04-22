@@ -14,18 +14,21 @@ export default function getLocalStorageData(): Participant[] {
         name: json.participants[0],
         score: 60,
         startedPuzzle: false,
+        startedFilm: false,
       },
       {
         id: 1,
         name: json.participants[1],
         score: 60,
         startedPuzzle: false,
+        startedFilm: false,
       },
       {
         id: 2,
         name: json.participants[2],
         score: 60,
         startedPuzzle: false,
+        startedFilm: false,
       },
     ];
     localStorage.setItem("data", JSON.stringify(initData));
