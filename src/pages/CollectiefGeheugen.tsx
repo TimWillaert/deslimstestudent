@@ -111,13 +111,15 @@ export default function CollectiefGeheugen() {
 
   const correctAnswer = () => {
     if (gameOver) return;
-    setCurrentScore(currentScore + 30);
+    const solvedAnswers = solved.length;
+    const points = (solvedAnswers + 1) * 10;
+    setCurrentScore(currentScore + points);
     setData((prevData) => {
       return prevData.map((participant) => {
         if (participant.id === currentParticipant.id) {
           return {
             ...participant,
-            score: participant.score + 30,
+            score: participant.score + points,
           };
         } else {
           return participant;
