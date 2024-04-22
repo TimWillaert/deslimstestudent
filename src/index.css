@@ -10,3 +10,80 @@
 * {
   font-family: "Opinion Pro", serif;
 }
+
+.scoreboard {
+  background-image: url("./img/scoreboard.png");
+  background-size: cover;
+}
+
+.puzzel {
+  background-image: url("./img/puzzel.png");
+  background-size: cover;
+}
+
+.pill {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pill-red {
+  background-image: url("./img/pill_red.png");
+}
+
+.pill-blue {
+  background-image: url("./img/pill_blue.png");
+}
+
+.pill-light-blue {
+  background-image: url("./img/pill_light_blue.png");
+}
+
+.pill-dark-blue {
+  background-image: url("./img/pill_dark_blue.png");
+}
+
+.pill-clear {
+  background-image: url("./img/pill_clear.png");
+}
+
+.button {
+  background-position: center;
+  background-size: cover;
+}
+
+.button-0 {
+  background-image: url("./img/button_blue.png");
+}
+
+.button-1 {
+  background-image: url("./img/button_light_blue.png");
+}
+
+.button-2 {
+  background-image: url("./img/button_dark_blue.png");
+}
+
+.button-clear {
+  background-image: url("./img/button_clear.png");
+}
+
+.circle-red {
+  background-image: url("./img/circle_red.png");
+  background-size: cover;
+}
+
+.circle-blue {
+  background-image: url("./img/circle_blue.png");
+  background-size: cover;
+}
+
+.border-horizontal {
+  border-image: linear-gradient(to right, #0e304f, #10456d, #0e304f) 30;
+  border-style: solid;
+}
+
+.border-vertical {
+  border-image: linear-gradient(to bottom, #0e304f, #10456d, #0e304f) 30;
+  border-style: solid;
+}

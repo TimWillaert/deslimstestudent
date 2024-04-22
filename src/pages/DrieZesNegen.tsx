@@ -63,36 +63,47 @@ export default function DrieZesNegen() {
   return (
     <div className="w-screen h-screen flex flex-col">
       <div className="flex flex-row w-screen h-1/2">
-        <div className="bg-green-500 h-full w-1/2 border-r-4 border-blue-900"></div>
-        <div className="bg-green-500 h-full w-1/2 border-l-4 border-blue-900"></div>
+        <div className="bg-green-500 h-full w-1/2 border-r-4 border-black"></div>
+        <div className="bg-green-500 h-full w-1/2 border-l-4 border-black"></div>
       </div>
-      <div className="bg-red-600 w-screen h-1/2 border-t-8 border-blue-900 flex flex-col justify-center gap-20">
+      <div className="scoreboard w-screen h-1/2 border-t-8 border-horizontal flex flex-col justify-center gap-14">
         <div className="flex flex-row self-center gap-32">
           {data.map((participant) => (
             <div
               key={participant.name}
-              className={`flex flex-col items-center gap-3 ${
-                currentParticipant == participant.id
-                  ? "text-white"
-                  : "text-white/50"
-              }`}
+              className="flex flex-col items-center gap-3 text-white"
             >
-              <p className="font-bold text-xl">
+              <p className="font-bold text-3xl">
                 {participant.name.toUpperCase()}
               </p>
-              <p className="text-lg">{participant.score - 60}</p>
+              <div
+                className={`w-16 h-10 rounded-[90%] ${
+                  participant.id == currentParticipant
+                    ? "pill pill-blue"
+                    : "pill pill-red"
+                } shadow-circle flex items-center justify-center`}
+              >
+                <p className="text-2xl font-bold p-3">{participant.score}</p>
+              </div>
             </div>
           ))}
         </div>
-        <div className="flex flex-row self-center gap-20">
+        <div className="flex flex-row self-center gap-10">
           {Array.from({ length: 12 }, (_, i) => (
-            <p
-              className={`text-xl ${
-                currentQuestion == i + 1 ? "text-white" : "text-white/50"
-              }`}
+            <div
+              key={i}
+              className={`${
+                currentQuestion == i + 1 && "circle-red shadow-circle"
+              } w-12 h-12 rounded-full flex items-center justify-center`}
             >
-              {i + 1}
-            </p>
+              <p
+                className={`text-2xl font-bold ${
+                  currentQuestion == i + 1 ? "text-white" : "text-white/40"
+                }`}
+              >
+                {i + 1}
+              </p>
+            </div>
           ))}
         </div>
       </div>

@@ -19,9 +19,11 @@ export default {
       boxShadow: {
         puzzle:
           "0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.1);",
+        circle:
+          "0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.1);",
       },
       textShadow: {
-        DEFAULT: "0 2px 16px var(--tw-shadow-color)",
+        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
       },
     },
   },

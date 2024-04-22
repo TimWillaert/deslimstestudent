@@ -171,7 +171,7 @@ export default function Puzzel() {
 
   return (
     <div className="w-screen h-screen flex flex-row">
-      <div className="w-4/6 bg-red-600 border-r-8 border-blue-900">
+      <div className="w-4/6 puzzel border-r-8 border-vertical">
         <div className="grid grid-cols-3 grid-rows-4 gap-2 mx-20 my-14">
           {shuffledPuzzle.map((cell, index) => (
             <PuzzleItem
@@ -196,12 +196,12 @@ export default function Puzzel() {
         </div>
       </div>
       <div className="flex-1 flex-col">
-        <div className="h-1/2 bg-green-500 border-b-4 border-blue-900 relative">
-          <div className="bg-blue-900 text-white absolute bottom-5 left-5 rounded-full w-10 h-10 flex items-center justify-center">
-            <p>{currentScore}</p>
+        <div className="h-1/2 bg-green-500 border-b-4 border-black relative">
+          <div className="circle-blue shadow-circle text-white rounded-full w-14 h-14 absolute bottom-3 left-3 flex items-center justify-center">
+            <p className="text-2xl font-bold">{currentScore}</p>
           </div>
         </div>
-        <div className="h-1/2 bg-green-500 border-t-4 border-blue-900">
+        <div className="h-1/2 bg-green-500 border-t-4 border-black">
           <p>{currentParticipant.name}</p>
         </div>
       </div>

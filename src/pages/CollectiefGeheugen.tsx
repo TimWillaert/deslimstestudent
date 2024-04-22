@@ -181,8 +181,8 @@ export default function CollectiefGeheugen() {
 
   return (
     <div className="w-screen h-screen flex flex-row">
-      <div className="w-1/2 bg-red-600 border-r-8 border-blue-900 flex items-center">
-        <div className="flex flex-col mx-32 gap-10">
+      <div className="w-1/2 puzzel border-r-8 border-vertical flex items-center">
+        <div className="flex flex-col mx-32 gap-14">
           {puzzle.map((answer, index) => (
             <CollectiefGeheugenAnswer
               key={index}
@@ -194,23 +194,23 @@ export default function CollectiefGeheugen() {
         </div>
       </div>
       <div className="flex-1 flex-col">
-        <div className="h-1/2 bg-green-500 border-b-4 border-blue-900 relative">
-          <div className="absolute -bottom-8 left-[50%] translate-x-[-50%] flex gap-20">
+        <div className="h-1/2 bg-green-500 border-b-4 border-black relative">
+          <div className="absolute -bottom-8 left-[50%] translate-x-[-50%] flex gap-28">
             {sortedArray.map((participant) => (
               <div
                 key={participant.id}
                 className={`${
                   participant.id == currentParticipant.id
-                    ? "bg-0-background"
-                    : "bg-red-600"
-                } shadow-puzzle text-white rounded-[90%] w-14 h-14 flex items-center justify-center`}
+                    ? "circle-blue"
+                    : "circle-red"
+                } shadow-circle text-white rounded-full w-14 h-14 flex items-center justify-center`}
               >
-                <p className="text-3xl font-bold">{participant.score}</p>
+                <p className="text-2xl font-bold">{participant.score}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="h-1/2 bg-green-500 border-t-4 border-blue-900">
+        <div className="h-1/2 bg-green-500 border-t-4 border-black">
           <p>{currentParticipant.name}</p>
         </div>
       </div>
