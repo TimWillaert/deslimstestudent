@@ -6,6 +6,8 @@ import json from "../data.json";
 import useKeypress from "react-use-keypress";
 import { useParams } from "react-router-dom";
 import CollectiefGeheugenAnswer from "../components/CollectiefGeheugenAnswer";
+import correctAudio from "../audio/correct.wav";
+import pasAudio from "../audio/pas.wav";
 
 export default function CollectiefGeheugen() {
   const params = useParams();
@@ -107,6 +109,8 @@ export default function CollectiefGeheugen() {
       setCurrentScore(participantOrder[participantsPlayed].score);
     }
     setParticipantsPlayed(participantsPlayed + 1);
+    const audio = new Audio(pasAudio);
+    audio.play();
   };
 
   const correctAnswer = () => {
@@ -126,6 +130,8 @@ export default function CollectiefGeheugen() {
         }
       });
     });
+    const audio = new Audio(correctAudio);
+    audio.play();
   };
 
   useEffect(() => {

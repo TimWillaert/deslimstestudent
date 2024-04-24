@@ -3,6 +3,7 @@ import getLocalStorageData from "../helpers/getLocalStorageData";
 import Participant from "../types/Participant";
 // @ts-expect-error no module declaration
 import useKeypress from "react-use-keypress";
+import correctAudio from "../audio/correct.wav";
 
 export default function DrieZesNegen() {
   const [data, setData] = useState<Participant[]>(getLocalStorageData());
@@ -24,6 +25,8 @@ export default function DrieZesNegen() {
           }
         });
       });
+      const audio = new Audio(correctAudio);
+      audio.play();
     }
     setCurrentQuestion((prev) => {
       if (prev == 9) {

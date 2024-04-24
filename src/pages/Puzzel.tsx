@@ -7,6 +7,8 @@ import PuzzleAnswer from "../components/PuzzleAnswer";
 // @ts-expect-error no module declaration
 import useKeypress from "react-use-keypress";
 import { useParams } from "react-router-dom";
+import correctAudio from "../audio/correct.wav";
+import pasAudio from "../audio/pas.wav";
 
 export default function Puzzel() {
   const params = useParams();
@@ -99,6 +101,8 @@ export default function Puzzel() {
       setCurrentScore(participantOrder[participantsPlayed].score);
     }
     setParticipantsPlayed(participantsPlayed + 1);
+    const audio = new Audio(pasAudio);
+    audio.play();
   };
 
   const correctAnswer = () => {
@@ -116,6 +120,8 @@ export default function Puzzel() {
         }
       });
     });
+    const audio = new Audio(correctAudio);
+    audio.play();
   };
 
   useEffect(() => {
