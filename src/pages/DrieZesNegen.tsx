@@ -26,8 +26,8 @@ export default function DrieZesNegen() {
       });
     }
     setCurrentQuestion((prev) => {
-      if (prev == 12) {
-        return 12;
+      if (prev == 9) {
+        return 9;
       } else {
         return prev + 1;
       }
@@ -46,8 +46,8 @@ export default function DrieZesNegen() {
     });
     if (currentTries == 2) {
       setCurrentQuestion((prev) => {
-        if (prev == 12) {
-          return 12;
+        if (prev == 9) {
+          return 9;
         } else {
           return prev + 1;
         }
@@ -89,7 +89,7 @@ export default function DrieZesNegen() {
           ))}
         </div>
         <div className="flex flex-row self-center gap-10">
-          {Array.from({ length: 12 }, (_, i) => (
+          {Array.from({ length: 9 }, (_, i) => (
             <div
               key={i}
               className={`${
