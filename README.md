@@ -34,7 +34,7 @@ De data van het spel wordt opgeslagen in localStorage. Als je het spel meerdere 
 
 ## 3-6-9
 
-- J = Juist antwoord, springt naar volgende vraag. Geeft 10 seconden op vraag 3, 6, 9, en 12.
+- J = Juist antwoord, springt naar volgende vraag. Geeft 10 seconden op vraag 3, 6, en 9.
 - F = Fout antwoord (of pas), springt naar volgende kandidaat. Als iedereen het fout heeft gaat het naar de volgende vraag.
 
 ## Puzzel
