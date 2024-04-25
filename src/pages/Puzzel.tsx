@@ -10,6 +10,14 @@ import { useParams } from "react-router-dom";
 import correctAudio from "../audio/correct.wav";
 import pasAudio from "../audio/pas.wav";
 
+// images om te preloaden
+import button_blue from "../img/button_blue.png";
+import pill_blue from "../img/pill_blue.png";
+import button_dark_blue from "../img/button_dark_blue.png";
+import pill_dark_blue from "../img/pill_dark_blue.png";
+import button_light_blue from "../img/button_light_blue.png";
+import pill_light_blue from "../img/pill_light_blue.png";
+
 export default function Puzzel() {
   const params = useParams();
   const puzzle = json.puzzles[parseInt(params.number!) - 1];
@@ -167,6 +175,21 @@ export default function Puzzel() {
     });
     localStorage.setItem("data", JSON.stringify(newData));
   }, [data]);
+
+  useEffect(() => {
+    //preload images
+    const imageList = [
+      button_blue,
+      pill_blue,
+      button_dark_blue,
+      pill_dark_blue,
+      button_light_blue,
+      pill_light_blue,
+    ];
+    imageList.forEach((image) => {
+      new Image().src = image;
+    });
+  }, []);
 
   if (
     (params.number && parseInt(params.number) < 1) ||
