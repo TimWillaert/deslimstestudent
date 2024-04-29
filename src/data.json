@@ -3,50 +3,50 @@
   "puzzles": [
     [
       {
-        "answer": "Kleuren",
-        "values": ["rood", "blauw", "geel", "groen"]
+        "answer": "Adobe",
+        "values": ["Photoshop", "Premiere Pro", "Illustrator", "After Effects"]
       },
       {
-        "answer": "Dagen",
-        "values": ["maandag", "dinsdag", "woensdag", "donderdag"]
+        "answer": "TV-Film",
+        "values": ["Cinematografie", "Branded Content", "Multicam", "Audiovisuele Kritiek"]
       },
       {
-        "answer": "Maanden",
-        "values": ["januari", "februari", "maart", "april"]
+        "answer": "Productdesign",
+        "values": ["Duurzaam", "Werkhuis", "Materiele Technologie", "Visueel Creëren"]
       }
     ],
     [
       {
-        "answer": "Vogels",
-        "values": ["merel", "mus", "kraai", "duif"]
+        "answer": "Game Design",
+        "values": ["Unreal Engine", "Bordspellen", "Programmeren", "3D-Visuals"]
       },
       {
-        "answer": "Vissen",
-        "values": ["karper", "snoek", "baars", "paling"]
+        "answer": "Studio",
+        "values": ["Grote", "Kleine", "Foto", "Geluid"]
       },
       {
-        "answer": "Zoogdieren",
-        "values": ["olifant", "leeuw", "tijger", "nijlpaard"]
+        "answer": "Fotografie",
+        "values": ["Compositie", "Image Manipulation", "Analoog vs Digitaal", "Model"]
       }
     ],
     [
       {
-        "answer": "Landen",
-        "values": ["Nederland", "België", "Duitsland", "Frankrijk"]
+        "answer": "Animatie",
+        "values": ["Storyboarding", "2D en 3D", "Foley", "Modeltekenen"]
       },
       {
-        "answer": "Hoofdsteden",
-        "values": ["Amsterdam", "Brussel", "Berlijn", "Parijs"]
+        "answer": "Doctoraat",
+        "values": ["Na je Master", "Paper", "Rijmt met tomaat", "Research"]
       },
       {
-        "answer": "Rivieren",
-        "values": ["Rijn", "Maas", "Schelde", "Seine"]
+        "answer": "Educatieve Master",
+        "values": ["Lesgeven", "Volledig traject", "Verkort traject", "ABC Brussel"]
       }
     ]
   ],
   "collectief_geheugen": [
-    ["Voetballer", "Argentinië", "FC Barcelona", "Inter Miami", "Wereldbeker"],
-    ["Zanger", "The Beatles", "Imagine", "New York", "Vredesactivist"],
-    ["Schilder", "Zonnebloemen", "Oor", "De sterrennacht", "Nederland"]
+    ["33 rondpunten", "Sint-Martinus Kerk", "C-Mine", "Genk", "Studentenstad"],
+    ["Helpt bij het zoeken naar koten", "Psychologische hulp", "Sociale dienst", "Sport en Cultuur voordelen", "Openbaar vervoer"],
+    ["Productdesign", "Gamedesign", "TV-Film", "Fotografie", "Animatie"]
   ]
 }
