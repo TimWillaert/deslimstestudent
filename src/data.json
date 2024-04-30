@@ -8,7 +8,7 @@
       },
       {
         "answer": "TV-Film",
-        "values": ["Cinematografie", "Branded Content", "Multicam", "Audiovisuele Kritiek"]
+        "values": ["Cinematografie", "Branded Content", "Scenario", "Audiovisuele Kritiek"]
       },
       {
         "answer": "Productdesign",
@@ -22,7 +22,7 @@
       },
       {
         "answer": "Studio",
-        "values": ["Grote", "Kleine", "Foto", "Geluid"]
+        "values": ["Donker", "Geen lichtinval", "Stille ruimte", "Werkplaats"]
       },
       {
         "answer": "Fotografie",
