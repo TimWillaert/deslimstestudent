@@ -132,6 +132,11 @@ export default function Puzzel() {
     audio.play();
   };
 
+  const sortedArray = useMemo(() => {
+    const sortedData = [...data];
+    return sortedData.sort((a, b) => (b.id < a.id ? 1 : -1));
+  }, [data]);
+
   useEffect(() => {
     const id = setInterval(() => {
       setCurrentScore((prev) => {
@@ -226,13 +231,28 @@ export default function Puzzel() {
       </div>
       <div className="flex-1 flex-col">
         <div className="h-1/2 bg-green-500 border-b-4 border-black relative">
-          <div className="circle-blue shadow-circle text-white rounded-full w-14 h-14 absolute bottom-3 left-3 flex items-center justify-center">
-            <p className="text-2xl font-bold">{currentScore}</p>
-          </div>
+        <div className="absolute -bottom-[3rem] left-[50%] translate-x-[-50%] flex gap-28 ">
+            {sortedArray.map((participant) => (
+              <div key={participant.id} className="flex flex-col gap-4 text-gray-200 items-center justify-center text-shadow shadow-black "
+              >
+              <div
+                className={`${
+                  participant.id == currentParticipant.id
+                    ? "circle-blue"
+                    : "circle-red"
+                } shadow-circle text-white rounded-full w-14 h-14 flex items-center justify-center`}
+              >
+                <p className="text-2xl font-bold">{participant.score}</p>
+
+              </div >
+              <p className={`${participant.id == currentParticipant.id ? 'text-white' : 'text-[#95b4cc]'}  text-[1.5rem] tracking-wider`} > {participant.name}</p>
+              </div>
+            ))}
+        </div>  
         </div>
         <div className="h-1/2 bg-green-500 border-t-4 border-black">
-          <p>{currentParticipant.name}</p>
-        </div>
+  
+      </div>
       </div>
     </div>
   );
