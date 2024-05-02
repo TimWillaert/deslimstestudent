@@ -231,7 +231,7 @@ export default function Puzzel() {
       </div>
       <div className="flex-1 flex-col">
         <div className="h-1/2 bg-green-500 border-b-4 border-black relative">
-        <div className="absolute -bottom-[3rem] left-[50%] translate-x-[-50%] flex gap-28 ">
+        <div className="absolute -bottom-[3rem] left-[50%] translate-x-[-50%] flex gap-14 ">
             {sortedArray.map((participant) => (
               <div key={participant.id} className="flex flex-col gap-4 text-gray-200 items-center justify-center text-shadow shadow-black "
               >
