@@ -50,6 +50,32 @@ export default function CollectiefGeheugen() {
     return participantsPlayed > data.length || solved.length >= puzzle.length;
   }, [participantsPlayed, solved]);
 
+  useKeypress("m", () => {
+    const id = setInterval(() => {
+      setCurrentScore((prev) => {
+        return prev - 1 < 0 ? 0 : prev - 1;
+      });
+  
+      setData((prevData) => {
+        return prevData.map((participant) => {
+          if (participant.id === currentParticipant.id) {
+            return {
+              ...participant,
+              score: participant.score - 1 < 0 ? 0 : participant.score - 1,
+            };
+          } else {
+            return participant;
+          }
+        });
+      });
+    }, 1000);
+    setCountdown(id);
+  });
+
+  useKeypress("Delete", () => {
+    localStorage.clear()
+  });
+
   useKeypress("a", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[0]]);
@@ -134,29 +160,8 @@ export default function CollectiefGeheugen() {
     audio.play();
   };
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCurrentScore((prev) => {
-        return prev - 1 < 0 ? 0 : prev - 1;
-      });
+  
 
-      setData((prevData) => {
-        return prevData.map((participant) => {
-          if (participant.id === currentParticipant.id) {
-            return {
-              ...participant,
-              score: participant.score - 1 < 0 ? 0 : participant.score - 1,
-            };
-          } else {
-            return participant;
-          }
-        });
-      });
-    }, 1000);
-    setCountdown(id);
-
-    return () => clearInterval(id);
-  }, [currentParticipant]);
 
   useEffect(() => {
     if (solved.length == puzzle.length) {

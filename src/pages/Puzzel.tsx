@@ -18,6 +18,8 @@ import pill_dark_blue from "../img/pill_dark_blue.png";
 import button_light_blue from "../img/button_light_blue.png";
 import pill_light_blue from "../img/pill_light_blue.png";
 
+
+
 export default function Puzzel() {
   const params = useParams();
   const puzzle = json.puzzles[parseInt(params.number!) - 1];
@@ -50,6 +52,33 @@ export default function Puzzel() {
     currentParticipant.score
   );
 
+
+
+  useKeypress("Enter", () => {
+    const id = setInterval(() => {
+      setCurrentScore((prev) => {
+        return prev - 1 < 0 ? 0 : prev - 1;
+      });
+  
+      setData((prevData) => {
+        return prevData.map((participant) => {
+          if (participant.id === currentParticipant.id) {
+            return {
+              ...participant,
+              score: participant.score - 1 < 0 ? 0 : participant.score - 1,
+            };
+          } else {
+            return participant;
+          }
+        });
+      });
+    }, 1000);
+    setCountdown(id);
+  });
+
+
+  
+
   const flattenedPuzzle = useMemo(
     () =>
       puzzle.flatMap((row, index) => {
@@ -67,6 +96,8 @@ export default function Puzzel() {
   const gameOver = useMemo(() => {
     return participantsPlayed > data.length || solved.length >= puzzle.length;
   }, [participantsPlayed, solved]);
+
+  
 
   useKeypress("a", () => {
     if (!gameOver) {
@@ -104,6 +135,7 @@ export default function Puzzel() {
     if (gameOver) {
       return;
     }
+
     if (participantOrder[participantsPlayed]) {
       setCurrentParticipant(participantOrder[participantsPlayed]);
       setCurrentScore(participantOrder[participantsPlayed].score);
@@ -137,29 +169,9 @@ export default function Puzzel() {
     return sortedData.sort((a, b) => (b.id < a.id ? 1 : -1));
   }, [data]);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCurrentScore((prev) => {
-        return prev - 1 < 0 ? 0 : prev - 1;
-      });
+  
 
-      setData((prevData) => {
-        return prevData.map((participant) => {
-          if (participant.id === currentParticipant.id) {
-            return {
-              ...participant,
-              score: participant.score - 1 < 0 ? 0 : participant.score - 1,
-            };
-          } else {
-            return participant;
-          }
-        });
-      });
-    }, 1000);
-    setCountdown(id);
 
-    return () => clearInterval(id);
-  }, [currentParticipant]);
 
   useEffect(() => {
     if (solved.length == puzzle.length) {
