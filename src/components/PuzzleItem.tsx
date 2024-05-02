@@ -16,14 +16,14 @@ export default function PuzzleItem({
           className={`h-24 flex items-center justify-center rounded-sm shadow-puzzle button button-${index}`}
         >
           <p
-            className={`text-${index}-foreground uppercase font-bold text-2xl mx-5 text-center`}
+            className={`text-${index}-foreground uppercase font-bold text-3xl tracking-wider mx-5 text-center`}
           >
             {text}
           </p>
         </div>
       ) : (
         <div className="h-24 flex items-center justify-center rounded-sm shadow-puzzle">
-          <p className="shadow-black text-white uppercase font-bold text-2xl text-shadow mx-5 text-center">
+          <p className="shadow-black text-white uppercase font-bold text-3xl tracking-wider text-shadow mx-5 text-center">
             {text}
           </p>
         </div>

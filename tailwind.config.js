@@ -23,7 +23,13 @@ export default {
           "0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.1);",
       },
       textShadow: {
-        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+        DEFAULT: "0px 2px 4px black",
+      },
+      fontSize: {
+        "5xl": "3rem",
+      },
+      borderWidth: {
+        10: "0.8rem",
       },
     },
   },

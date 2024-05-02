@@ -65,43 +65,47 @@ export default function DrieZesNegen() {
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <div className="flex flex-row w-screen h-1/2">
-        <div className="bg-green-500 h-full w-1/2 border-r-4 border-black"></div>
-        <div className="bg-green-500 h-full w-1/2 border-l-4 border-black"></div>
+      <div className="flex flex-row w-screen h-[65%]">
+        <div className="bg-green-500 h-full w-1/2 border-r-8 border-black"></div>
+        <div className="bg-green-500 h-full w-1/2 border-l-8 border-black"></div>
       </div>
-      <div className="scoreboard w-screen h-1/2 border-t-8 border-horizontal flex flex-col justify-center gap-14">
-        <div className="flex flex-row self-center gap-32">
+      <div className="scoreboard w-screen h-1/2 border-t-10 border-horizontal flex flex-col justify-center gap-14">
+        <div className="flex flex-row self-center gap-52">
           {data.map((participant) => (
             <div
               key={participant.name}
               className="flex flex-col items-center gap-3 text-white"
             >
-              <p className="font-bold text-3xl">
+              <p className="font-bold text-5xl tracking-wider text-shadow">
                 {participant.name.toUpperCase()}
               </p>
               <div
-                className={`w-16 h-10 rounded-[90%] ${
+                className={`w-28 h-16 rounded-[90%] ${
                   participant.id == currentParticipant
                     ? "pill pill-blue"
                     : "pill pill-red"
                 } shadow-circle flex items-center justify-center`}
               >
-                <p className="text-2xl font-bold p-3">{participant.score}</p>
+                <p className="text-5xl font-bold tracking-wide text-shadow">
+                  {participant.score}
+                </p>
               </div>
             </div>
           ))}
         </div>
-        <div className="flex flex-row self-center gap-10">
+        <div className="flex flex-row self-center gap-14">
           {Array.from({ length: 9 }, (_, i) => (
             <div
               key={i}
               className={`${
                 currentQuestion == i + 1 && "circle-red shadow-circle"
-              } w-12 h-12 rounded-full flex items-center justify-center`}
+              } w-20 h-20 rounded-full flex items-center justify-center`}
             >
               <p
-                className={`text-2xl font-bold ${
-                  currentQuestion == i + 1 ? "text-white" : "text-white/40"
+                className={`text-5xl font-bold ${
+                  currentQuestion == i + 1
+                    ? "text-white text-shadow"
+                    : "text-white/40"
                 }`}
               >
                 {i + 1}

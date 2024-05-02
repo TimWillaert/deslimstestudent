@@ -35,7 +35,7 @@ export default function PuzzleAnswer({
               30
             </p>
           </div>
-          <p className="ml-7 text-2xl font-bold text-white uppercase text-shadow shadow-black">
+          <p className="ml-7 text-3xl font-bold text-white uppercase text-shadow shadow-black tracking-wider">
             {answer}
           </p>
         </>
@@ -48,7 +48,7 @@ export default function PuzzleAnswer({
               >
                 <p></p>
               </div>
-              <p className="ml-7 text-2xl font-bold text-white uppercase text-shadow shadow-black">
+              <p className="ml-7 text-3xl font-bold text-white uppercase text-shadow shadow-black tracking-wider">
                 {answer}
               </p>
             </>
@@ -57,7 +57,7 @@ export default function PuzzleAnswer({
               <div className="w-16 h-10 rounded-[90%] pill pill-clear shadow-circle flex items-center justify-center">
                 <p></p>
               </div>
-              <p className="ml-7 text-2xl font-bold text-black uppercase blur-md">
+              <p className="ml-7 text-3xl font-bold text-black uppercase blur-md tracking-wider">
                 {answer}
               </p>
             </>
