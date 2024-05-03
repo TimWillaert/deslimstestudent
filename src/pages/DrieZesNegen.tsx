@@ -65,7 +65,7 @@ export default function DrieZesNegen() {
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <div className="flex flex-row w-screen h-[65%]">
+      <div className="flex flex-row w-screen h-[50%]">
         <div className="bg-green-500 h-full w-1/2 border-r-8 border-black"></div>
         <div className="bg-green-500 h-full w-1/2 border-l-8 border-black"></div>
       </div>

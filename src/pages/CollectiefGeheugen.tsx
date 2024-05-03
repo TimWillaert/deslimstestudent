@@ -50,7 +50,7 @@ export default function CollectiefGeheugen() {
     return participantsPlayed > data.length || solved.length >= puzzle.length;
   }, [participantsPlayed, solved]);
 
-  useKeypress("m", () => {
+  useKeypress("Enter", () => {
     const id = setInterval(() => {
       setCurrentScore((prev) => {
         return prev - 1 < 0 ? 0 : prev - 1;
@@ -85,7 +85,7 @@ export default function CollectiefGeheugen() {
     correctAnswer();
   });
 
-  useKeypress("b", () => {
+  useKeypress("z", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[1]]);
     } else {
@@ -94,7 +94,7 @@ export default function CollectiefGeheugen() {
     correctAnswer();
   });
 
-  useKeypress("c", () => {
+  useKeypress("e", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[2]]);
     } else {
@@ -103,7 +103,7 @@ export default function CollectiefGeheugen() {
     correctAnswer();
   });
 
-  useKeypress("d", () => {
+  useKeypress("r", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[3]]);
     } else {
@@ -112,7 +112,7 @@ export default function CollectiefGeheugen() {
     correctAnswer();
   });
 
-  useKeypress("e", () => {
+  useKeypress("t", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[4]]);
     } else {

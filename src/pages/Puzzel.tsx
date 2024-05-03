@@ -108,7 +108,7 @@ export default function Puzzel() {
     correctAnswer();
   });
 
-  useKeypress("b", () => {
+  useKeypress("z", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[1].answer]);
     } else {
@@ -117,7 +117,7 @@ export default function Puzzel() {
     correctAnswer();
   });
 
-  useKeypress("c", () => {
+  useKeypress("e", () => {
     if (!gameOver) {
       setSolved([...solved, puzzle[2].answer]);
     } else {
